@@ -62,7 +62,7 @@ RUN apt-get update && apt-get install -y wget procps && \
 	rm -rf /var/lib/apt/lists/*
 COPY hive/* $HIVE_HOME/conf/
 
-#MYSQL as Hive Metastore
+#MYSQL for Hive Metastore
 RUN apt-get update && apt-get -y install default-mysql-server
 WORKDIR $HIVE_HOME/lib/
 RUN apt-get update && apt-get install -y wget && \
@@ -84,7 +84,6 @@ RUN cp $HADOOP_HOME/share/hadoop/common/lib/guava-*.jar $HIVE_HOME/lib/
 
 #Hue
 WORKDIR /home/hadoop
-#RUN apt -y install software-properties-common
 ENV PYTHON_VER=python3.7
 RUN apt-get -y install npm git ant gcc g++ libffi-dev libkrb5-dev default-libmysqlclient-dev libsasl2-dev libsasl2-modules-gssapi-mit libsqlite3-dev libssl-dev libxml2-dev libxslt-dev make maven libldap2-dev python-dev python-setuptools libgmp3-dev
 RUN apt -y install python3.7-dev python3-distutils

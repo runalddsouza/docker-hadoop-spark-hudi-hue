@@ -14,10 +14,10 @@ $HADOOP_HOME/sbin/start-dfs.sh
 $HADOOP_HOME/sbin/start-yarn.sh
 
 #Hive
-hdfs dfs -mkdir      /tmp
-hdfs dfs -mkdir -p   /user/hive/warehouse
-hdfs dfs -chmod g+w  /tmp
-hdfs dfs -chmod g+w  /user/hive/warehouse
+hdfs dfs -mkdir /tmp
+hdfs dfs -mkdir -p /user/hive/warehouse
+hdfs dfs -chmod g+w /tmp
+hdfs dfs -chmod g+w /user/hive/warehouse
 mkdir -p /var/log/hive
 cd /home/hadoop || exit
 service mysql start
@@ -33,6 +33,6 @@ hdfs dfs -put $SPARK_HOME/jars/* /spark-jars/
 hue/build/env/bin/hue migrate
 hue/build/env/bin/supervisor >hue.out 2>hue.log &
 
-echo "All componenents have been installed!"
+echo "Installation complete!"
 
 bash
