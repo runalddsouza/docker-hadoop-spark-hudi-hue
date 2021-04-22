@@ -1,4 +1,4 @@
-# docker-hadoop3
+# docker-hadoop-spark-hudi-hue
 
 Single node Hadoop setup having version 3.2.2 along with below applications:
 
@@ -12,9 +12,16 @@ Single node Hadoop setup having version 3.2.2 along with below applications:
 MySQL has been configured as Hive metastore as well as engine for Hue.
 
 Steps to run:
-- Build the image: `docker build -t hadoop ./`
+- Clone repository
+- Build the image: `docker build -t <TAG-NAME> ./`
+- Run container: `docker run --name <NAME> -dit -p 8088:8088 -p 8042:8042 -p 8888:8888 -p 10002:10002 -p 9870:9870 <TAG-NAME>`
+- Enter shell: `docker exec -it <NAME> /bin/bash`
 
-- Run container: `docker run -p 8088:8088 -p -p 8042:8042 -p 8888:8888 -p 10002:10002 -p 9870:9870 --name hadoop -d hadoop`
+CLI:
+- Hive: `beeline -u jdbc:hive2://localhost:10000`
+- Spark shell (YARN): `spark-shell`
+- HDFS : `hdfs [OPTIONS] SUBCOMMAND [SUBCOMMAND OPTIONS]`
+
   
 Access WebUI for:
 - YARN: http://localhost:8088
